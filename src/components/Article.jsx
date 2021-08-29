@@ -26,8 +26,12 @@ const ArticleId = () => {
 
               <p>Written by {article.author}</p>
               <p>{article.body}</p>
+              <br />
+              <i class="far fa-comments fa-2x"></i>
+              <h3>{article.comment_count} Comments</h3>
             </article>
             <aside id="categories" className="card">
+              <br />
               <h2>Catergories</h2>
             </aside>
             <aside className="card bg-secondary">Sign Up</aside>

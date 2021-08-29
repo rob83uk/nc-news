@@ -13,6 +13,8 @@ const ArticleList = () => {
     });
   }, [topic, page]);
 
+  console.log(page);
+
   return (
     <div>
       <section id="home-articles" className="py-2">
@@ -45,20 +47,20 @@ const ArticleList = () => {
           </div>
         </div>
       </section>
-      <div className="container page">
+      <div className="container page" id="page-buttons">
         <button
-          className=".btn-secondary"
+          className="btn btn-secondary"
           id="previous"
           onClick={() => {
             setPage((page) => {
-              return page - 1;
+              return page === 1 ? 1 : page - 1;
             });
           }}
         >
           Previous
         </button>
         <button
-          className=".btn-secondary"
+          className="btn btn-primary"
           id="next"
           onClick={() => {
             setPage((page) => {

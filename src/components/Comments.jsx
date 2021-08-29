@@ -4,11 +4,11 @@ import { getComments } from './api';
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
-  const [displayComments, setDisplayCommenst] = useState(false);
+  const [displayComments, setDisplayComments] = useState(false);
   const { article_id } = useParams();
 
   const onClick = () => {
-    setDisplayCommenst(true);
+    setDisplayComments(true);
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Comments = () => {
         <div className="container">
           <div className="comment-container">
             <div className="comments-header">
-              <h2>{comments.length} Comments</h2>
+              {/* <h2>{comments.length} Comments</h2> */}
               <button
                 className="btn btn-secondary"
                 type="submit"
@@ -34,16 +34,21 @@ const Comments = () => {
                 Show Comments
               </button>
             </div>
-            {comments.map((comment) => {
-              return (
-                <div key={comment.comment_id} className="comment-card">
-                  <h5>
-                    {comment.author} Likes: {comment.votes}
-                  </h5>
-                  {comment.body}
-                </div>
-              );
-            })}
+            {!displayComments
+              ? null
+              : comments.map((comment) => {
+                  return (
+                    <div key={comment.comment_id} className="comment-card">
+                      <h5>
+                        <i class="far fa-user" /> {comment.author}{' '}
+                        <span id="likes">
+                          <i class="far fa-thumbs-up" /> Likes: {comment.votes}
+                        </span>
+                      </h5>
+                      {comment.body}
+                    </div>
+                  );
+                })}
           </div>
         </div>
       </section>
