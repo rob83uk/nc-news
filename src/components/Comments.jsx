@@ -31,6 +31,9 @@ const Comments = (props) => {
     });
   }, [article_id, page, reloadComments]);
 
+  const handleLike = () => {};
+  const handleDislike = () => {};
+
   return (
     <div>
       <section id="comments">
@@ -52,12 +55,17 @@ const Comments = (props) => {
                     <div key={comment.comment_id} className="comment-card">
                       <h5>
                         <i className="far fa-user" /> {comment.author}{' '}
-                        <span id="likes">
-                          <i className="far fa-thumbs-up" /> Likes:{' '}
-                          {comment.votes}
-                        </span>
+                        <span id="likes">Likes: {comment.votes}</span>
                       </h5>
-                      {comment.body}
+                      <p>{comment.body}</p>
+                      <div className="likes">
+                        <div className="like" onClick={handleLike}>
+                          <i className="far fa-thumbs-up" />
+                        </div>
+                        <div className="dislike" onClick={handleDislike}>
+                          <i class="far fa-thumbs-down" />
+                        </div>
+                      </div>
                     </div>
                   );
                 })}

@@ -393,6 +393,23 @@ h6 {
   margin: 0 2rem;
 }
 
+.likes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.like {
+  margin-right: 0.7rem;
+}
+
+.like:hover {
+  color: green;
+}
+.dislike:hover {
+  color: red;
+}
+
 /* Users Page */
 #users {
   margin-top: 1rem;
