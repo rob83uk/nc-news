@@ -24,7 +24,10 @@ const ArticleId = () => {
               />
               <h1 className="l-heading">{article.title}</h1>
 
-              <p>Written by {article.author}</p>
+              <p>
+                <i className="fas fa-user" />
+                Written by {article.author}
+              </p>
               <p>{article.body}</p>
               <br />
               <i class="far fa-comments fa-2x"></i>

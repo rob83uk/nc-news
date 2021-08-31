@@ -6,9 +6,15 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const [displayComments, setDisplayComments] = useState(false);
   const [page, setPage] = useState(1);
+  const [reloadComments, setReloadComments] = useState(false);
   const { article_id } = useParams();
 
-  const onClick = () => {
+  const showComments = () => {
+    if (displayComments) {
+      setComments([]);
+      setPage(1);
+      setReloadComments((reloadComments) => !reloadComments);
+    }
     setDisplayComments((displayComments) => !displayComments);
   };
 
@@ -16,15 +22,15 @@ const Comments = () => {
     setPage((page) => page + 1);
   };
 
-  console.log(comments);
-
   useEffect(() => {
     getComments(article_id, page).then((comments) => {
       setComments((currentComments) => {
         return currentComments.concat(comments);
       });
     });
-  }, [article_id, page]);
+  }, [article_id, page, reloadComments]);
+
+  console.log(page);
 
   return (
     <div>
@@ -35,7 +41,7 @@ const Comments = () => {
               <button
                 className="btn btn-secondary"
                 type="submit"
-                onClick={onClick}
+                onClick={showComments}
               >
                 {displayComments ? 'Hide Comments' : 'Show Comments'}
               </button>
@@ -46,24 +52,27 @@ const Comments = () => {
                   return (
                     <div key={comment.comment_id} className="comment-card">
                       <h5>
-                        <i class="far fa-user" /> {comment.author}{' '}
+                        <i className="far fa-user" /> {comment.author}{' '}
                         <span id="likes">
-                          <i class="far fa-thumbs-up" /> Likes: {comment.votes}
+                          <i className="far fa-thumbs-up" /> Likes:{' '}
+                          {comment.votes}
                         </span>
                       </h5>
                       {comment.body}
                     </div>
                   );
                 })}
-            <div className="comments-header-footer">
-              <button
-                className="btn btn-secondary"
-                type="submit"
-                onClick={loadMoreComments}
-              >
-                Load More Comments
-              </button>
-            </div>
+            {!displayComments ? null : (
+              <div className="comments-header-footer">
+                <button
+                  className="btn btn-secondary"
+                  type="submit"
+                  onClick={loadMoreComments}
+                >
+                  Load More Comments
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
