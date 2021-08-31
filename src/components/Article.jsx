@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticle } from './api';
 
-const ArticleId = () => {
-  const [article, setArticle] = useState({});
+const ArticleId = (props) => {
   const { article_id } = useParams();
+  const { article, setArticle } = props;
 
   useEffect(() => {
     getArticle(article_id).then((article) => {

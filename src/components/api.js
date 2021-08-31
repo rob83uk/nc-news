@@ -27,3 +27,8 @@ export const getComments = async (article_id, page) => {
   );
   return data.comments;
 };
+
+export const getUsers = async () => {
+  const { data } = await articlesApi.get('/users');
+  return data.users;
+};

@@ -13,8 +13,6 @@ const ArticleList = () => {
     });
   }, [topic, page]);
 
-  console.log(page);
-
   return (
     <div>
       <section id="home-articles" className="py-2">

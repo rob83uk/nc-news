@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getComments } from './api';
 
-const Comments = () => {
+const Comments = (props) => {
   const [comments, setComments] = useState([]);
   const [displayComments, setDisplayComments] = useState(false);
   const [page, setPage] = useState(1);
   const [reloadComments, setReloadComments] = useState(false);
   const { article_id } = useParams();
+  const { article } = props;
 
   const showComments = () => {
     if (displayComments) {
@@ -29,8 +30,6 @@ const Comments = () => {
       });
     });
   }, [article_id, page, reloadComments]);
-
-  console.log(page);
 
   return (
     <div>
@@ -62,7 +61,10 @@ const Comments = () => {
                     </div>
                   );
                 })}
-            {!displayComments ? null : (
+            {!displayComments ? null : article.comment_count <=
+              comments.length ? (
+              <p>No more comments</p>
+            ) : (
               <div className="comments-header-footer">
                 <button
                   className="btn btn-secondary"

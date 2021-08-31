@@ -2,16 +2,15 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTopics } from './api';
 
-const Header = () => {
-  //  use state to determine the topics
+const Header = (props) => {
   const [topics, setTopics] = useState([]);
+  const { user } = props;
 
   useEffect(() => {
     getTopics().then((topics) => {
       setTopics(topics);
     });
   }, [topics]);
-  // use topics in nav bar
 
   return (
     <div id="main-nav">
@@ -37,6 +36,14 @@ const Header = () => {
             })}
           </ul>
         </div>
+      </div>
+      <div className="user">
+        <p>
+          <i className="far fa-user" /> {user.username}
+        </p>
+        <Link to="/users/">
+          <button class="btn btn-dark">Change User</button>
+        </Link>
       </div>
     </div>
   );
