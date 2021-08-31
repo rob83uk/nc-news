@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <footer id="main-footer" className="py-2">
@@ -11,9 +13,29 @@ const Footer = () => {
             Northcoders - Manchester
           </p>
         </div>
-        <div>EMAIL NEWSLETTER</div>
-        <div>Site Links</div>
-        <div>Join our club</div>
+        <div>
+          <h2>EMAIL NEWSLETTER</h2>
+        </div>
+        <div>
+          <h2>Site Links</h2>
+          <ul>
+            <Link>
+              <li>About</li>
+            </Link>
+            <Link to="/privicy/">
+              <li>Privicy Policy</li>
+            </Link>
+            <Link>
+              <li>Help and Support</li>
+            </Link>
+            <Link>
+              <li>Contact Us</li>
+            </Link>
+          </ul>
+        </div>
+        <div>
+          <h2>Join our club</h2>
+        </div>
         <div>
           <p>Copyright &copy; 2021 All rights reserved</p>
         </div>

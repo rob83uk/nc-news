@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Article from './components/Article';
 import Comments from './components/Comments';
+import Privicy from './components/Privicy';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Route exact path="/articles/:article_id">
           <Article />
           <Comments />
+        </Route>
+        <Route exact path="/privicy/">
+          <Privicy />
         </Route>
       </Switch>
       <Footer />

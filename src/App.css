@@ -362,9 +362,10 @@ h6 {
   /* border: tomato 1px solid; */
   background: #fff;
   margin: 0.5rem 0;
+  padding: 0.5rem;
 }
 
-.comments-header {
+.comments-header-footer {
   display: flex;
   align-items: center;
 }
@@ -391,14 +392,24 @@ h6 {
   grid-gap: 1.5rem;
 }
 
-#main-footer .footer-container > *:last-child {
-  background: #444;
-  grid-column: 1 / span 4;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 0.75rem;
+#main-footer .footer-container > * p,
+#main-footer .footer-container > * a,
+#main-footer .footer-container > * h2 {
+  text-align: left;
+  color: #fff;
 }
 
 #main-footer .footer-container > *:first-child #NC {
   color: red;
+}
+
+#main-footer .footer-container > *:last-child {
+  background: #444;
+  grid-column: 1 / span 4;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+}
+
+#main-footer .footer-container > *:last-child p {
+  text-align: center;
 }

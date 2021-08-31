@@ -21,7 +21,10 @@ export const getArticle = async (article_id) => {
   return data.article;
 };
 
-export const getComments = async (article_id) => {
-  const { data } = await articlesApi.get(`/articles/${article_id}/comments`);
+export const getComments = async (article_id, page) => {
+  const { data } = await articlesApi.get(
+    `/articles/${article_id}/comments?page=${page}`
+  );
+  console.log(data.comments);
   return data.comments;
 };
