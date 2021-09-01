@@ -57,6 +57,7 @@ const ArticleList = () => {
         >
           Previous
         </button>
+        <p>Page {page}</p>
         <button
           className="btn btn-primary"
           id="next"

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getUsers } from './api';
+import { Link } from 'react-router-dom';
 
 const Users = (props) => {
   const { setUser } = props;
@@ -33,14 +34,16 @@ const Users = (props) => {
                 <i className="far fa-user fa-6x" />
                 <div className="user-select">
                   <h2>{user.username}</h2>
-                  <button
-                    value={user.username}
-                    type="submit"
-                    onClick={changeUser}
-                    className="btn btn-primary"
-                  >
-                    Select User
-                  </button>
+                  <Link to="/articles/">
+                    <button
+                      value={user.username}
+                      type="submit"
+                      onClick={changeUser}
+                      className="btn btn-primary"
+                    >
+                      Select User
+                    </button>
+                  </Link>
                 </div>
               </div>
             );

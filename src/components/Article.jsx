@@ -26,7 +26,11 @@ const ArticleId = (props) => {
 
               <p>
                 <i className="fas fa-user" />
-                Written by {article.author}
+                Written by {article.author} ||{' '}
+                {Date(article.created_at).substring(
+                  0,
+                  Date(article.created_at).length - 40
+                )}
               </p>
               <p>{article.body}</p>
               <br />

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getComments } from './api';
+import { getComments, setVote } from './api';
 
 const Comments = (props) => {
   const [comments, setComments] = useState([]);
   const [displayComments, setDisplayComments] = useState(false);
   const [page, setPage] = useState(1);
   const [reloadComments, setReloadComments] = useState(false);
+  const [hasErrored, setHasErrored] = useState(false);
   const { article_id } = useParams();
   const { article } = props;
 
@@ -31,8 +32,29 @@ const Comments = (props) => {
     });
   }, [article_id, page, reloadComments]);
 
-  const handleLike = () => {};
-  const handleDislike = () => {};
+  const handleLike = (num, id) => {
+    setHasErrored(false);
+    setComments((currentComments) => {
+      const updatedComments = currentComments.map((comment) => {
+        const newComment = { ...comment };
+        if (id === newComment.comment_id) newComment.votes += num;
+        return newComment;
+      });
+      return updatedComments;
+    });
+    setVote(num, id).catch(() => {
+      setHasErrored(true);
+      console.log(hasErrored);
+      setComments((currentComments) => {
+        const updatedComments = currentComments.map((comment) => {
+          const newComment = { ...comment };
+          if (id === newComment.comment_id) newComment.votes -= num;
+          return newComment;
+        });
+        return updatedComments;
+      });
+    });
+  };
 
   return (
     <div>
@@ -59,12 +81,24 @@ const Comments = (props) => {
                       </h5>
                       <p>{comment.body}</p>
                       <div className="likes">
-                        <div className="like" onClick={handleLike}>
-                          <i className="far fa-thumbs-up" />
-                        </div>
-                        <div className="dislike" onClick={handleDislike}>
+                        <span
+                          className="like"
+                          onClick={() => {
+                            handleLike(1, comment.comment_id);
+                          }}
+                        >
+                          <i className="far fa-thumbs-up"></i>
+                        </span>
+                        <span
+                          className="dislike"
+                          value={1}
+                          onClick={() => {
+                            handleLike(-1, comment.comment_id);
+                          }}
+                        >
                           <i class="far fa-thumbs-down" />
-                        </div>
+                        </span>
+                        {hasErrored && <p>Voting not working right now.</p>}
                       </div>
                     </div>
                   );
@@ -91,3 +125,8 @@ const Comments = (props) => {
 };
 
 export default Comments;
+
+// {{
+//   comment_id: comment.comment_id,
+//   inc_vote: 1
+// }}

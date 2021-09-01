@@ -32,3 +32,9 @@ export const getUsers = async () => {
   const { data } = await articlesApi.get('/users');
   return data.users;
 };
+
+export const setVote = async (num, comment_id) => {
+  const vote = { inc_votes: num };
+  const { data } = await articlesApi.patch(`/comments/${comment_id}`, vote);
+  return data.comment.votes;
+};
