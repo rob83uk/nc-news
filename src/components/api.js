@@ -38,3 +38,15 @@ export const setVote = async (num, comment_id) => {
   const { data } = await articlesApi.patch(`/comments/${comment_id}`, vote);
   return data.comment.votes;
 };
+
+export const postComment = async (article_id, username, comment) => {
+  const newComment = {
+    username: username,
+    body: comment
+  };
+  const { data } = await articlesApi.post(
+    `/articles/${article_id}/comments`,
+    newComment
+  );
+  return data.comment;
+};

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getComments, setVote } from './api';
+import { useParams, Route } from 'react-router-dom';
+import { getComments, postComment, setVote } from './api';
+import PostComment from './PostComment';
 
 const Comments = (props) => {
   const [comments, setComments] = useState([]);
@@ -8,8 +9,10 @@ const Comments = (props) => {
   const [page, setPage] = useState(1);
   const [reloadComments, setReloadComments] = useState(false);
   const [hasErrored, setHasErrored] = useState(false);
+  const [writeComment, setWriteComment] = useState(false);
+
   const { article_id } = useParams();
-  const { article } = props;
+  const { article, user } = props;
 
   const showComments = () => {
     if (displayComments) {
@@ -42,6 +45,7 @@ const Comments = (props) => {
       });
       return updatedComments;
     });
+
     setVote(num, id).catch(() => {
       setHasErrored(true);
       console.log(hasErrored);
@@ -54,6 +58,7 @@ const Comments = (props) => {
         return updatedComments;
       });
     });
+    alert('Thanks for your vote!');
   };
 
   return (
@@ -69,6 +74,30 @@ const Comments = (props) => {
               >
                 {displayComments ? 'Hide Comments' : 'Show Comments'}
               </button>
+              <button
+                className="btn btn-primary"
+                type="submit"
+                onClick={() => {
+                  setWriteComment((writeComment) => {
+                    return !writeComment;
+                  });
+                }}
+              >
+                Write a Comment
+              </button>
+            </div>
+            <div>
+              {writeComment && (
+                <Route>
+                  <PostComment
+                    article_id={article_id}
+                    user={user}
+                    setComments={setComments}
+                    setPage={setPage}
+                    setReloadComments={setReloadComments}
+                  />
+                </Route>
+              )}
             </div>
             {!displayComments
               ? null

@@ -10,7 +10,7 @@ const Header = (props) => {
     getTopics().then((topics) => {
       setTopics(topics);
     });
-  }, [topics]);
+  }, []);
 
   return (
     <div id="main-nav">

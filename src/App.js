@@ -11,7 +11,7 @@ import Users from './components/Users';
 
 function App() {
   const [article, setArticle] = useState({});
-  const [user, setUser] = useState({ username: 'butter_bridge' });
+  const [user, setUser] = useState({ username: 'cooljmessy' });
   const [page, setPage] = useState(1);
 
   return (
@@ -26,7 +26,7 @@ function App() {
         </Route>
         <Route exact path="/articles/:article_id">
           <Article article={article} setArticle={setArticle} />
-          <Comments article={article} />
+          <Comments article={article} user={user} />
         </Route>
         <Route exact path="/privicy/">
           <Privicy />

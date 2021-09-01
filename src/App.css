@@ -391,8 +391,8 @@ h6 {
   align-items: center;
 }
 
-.comments-header .btn {
-  /* margin-left: 2rem; */
+.comments-header-footer button {
+  margin-right: 2rem;
 }
 
 .comment-card #likes {
@@ -414,6 +414,30 @@ h6 {
 }
 .dislike:hover {
   color: red;
+}
+
+.comment-form {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-input {
+  grid-area: message;
+  height: 60px;
+  width: 100%;
+}
+
+.comment-form button {
+  margin-left: 1rem;
+}
+
+.message-input {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 /* Users Page */
