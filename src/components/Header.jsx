@@ -4,7 +4,7 @@ import { getTopics } from './api';
 
 const Header = (props) => {
   const [topics, setTopics] = useState([]);
-  const { user } = props;
+  const { user, setPage } = props;
 
   useEffect(() => {
     getTopics().then((topics) => {
@@ -17,19 +17,34 @@ const Header = (props) => {
       <div className="container">
         <div className="logo">
           <h1>
-            <Link to="/articles/">
+            <Link
+              to="/articles/"
+              onClick={() => {
+                setPage(() => 1);
+              }}
+            >
               <span id="NC">NC</span> News
             </Link>
           </h1>
         </div>
         <div className="nav-links">
           <ul>
-            <Link to="/articles/">
+            <Link
+              to="/articles/"
+              onClick={() => {
+                setPage(1);
+              }}
+            >
               <li key="home">Home</li>
             </Link>
             {topics.map((topic) => {
               return (
-                <Link to={`/articles/topic/${topic.slug}/`}>
+                <Link
+                  to={`/articles/topic/${topic.slug}/`}
+                  onClick={() => {
+                    setPage(1);
+                  }}
+                >
                   <li key={topic.slug}>{topic.slug}</li>
                 </Link>
               );

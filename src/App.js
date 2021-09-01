@@ -12,16 +12,17 @@ import Users from './components/Users';
 function App() {
   const [article, setArticle] = useState({});
   const [user, setUser] = useState({ username: 'butter_bridge' });
+  const [page, setPage] = useState(1);
 
   return (
     <div className="App">
-      <Header user={user} />
+      <Header user={user} setPage={setPage} />
       <Switch>
         <Route exact path="/articles/">
-          <ArticleList />
+          <ArticleList page={page} setPage={setPage} />
         </Route>
         <Route exact path="/articles/topic/:topic/">
-          <ArticleList />
+          <ArticleList page={page} setPage={setPage} />
         </Route>
         <Route exact path="/articles/:article_id">
           <Article article={article} setArticle={setArticle} />

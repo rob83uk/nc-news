@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams, Link } from 'react-router-dom';
 import { getArticles } from './api';
 
-const ArticleList = () => {
+const ArticleList = (props) => {
   const { topic } = useParams();
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
+  const { page, setPage } = props;
 
   useEffect(() => {
     getArticles(topic, page).then((articles) => {
