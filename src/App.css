@@ -440,6 +440,20 @@ h6 {
   line-height: 1.2;
 }
 
+.delete button {
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  margin-left: 1rem;
+}
+.delete button:hover {
+  opacity: 1;
+}
+
+.delete button:hover i {
+  color: #333;
+  opacity: 1;
+}
+
 /* Users Page */
 #users {
   margin-top: 1rem;

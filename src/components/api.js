@@ -50,3 +50,8 @@ export const postComment = async (article_id, username, comment) => {
   );
   return data.comment;
 };
+
+export const deleteComment = async (comment_id) => {
+  const { data } = await articlesApi.delete(`/comments/${comment_id}`);
+  return data;
+};

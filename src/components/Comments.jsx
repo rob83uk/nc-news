@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, Route } from 'react-router-dom';
-import { getComments, postComment, setVote } from './api';
+import { getComments, setVote } from './api';
 import PostComment from './PostComment';
+import DeleteComment from './DeleteComment';
 
 const Comments = (props) => {
   const [comments, setComments] = useState([]);
@@ -127,6 +128,14 @@ const Comments = (props) => {
                         >
                           <i class="far fa-thumbs-down" />
                         </span>
+                        {user.username !== comment.author ? null : (
+                          <Route>
+                            <DeleteComment
+                              comment_id={comment.comment_id}
+                              setComments={setComments}
+                            />
+                          </Route>
+                        )}
                         {hasErrored && <p>Voting not working right now.</p>}
                       </div>
                     </div>
@@ -154,8 +163,3 @@ const Comments = (props) => {
 };
 
 export default Comments;
-
-// {{
-//   comment_id: comment.comment_id,
-//   inc_vote: 1
-// }}

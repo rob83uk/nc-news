@@ -10,7 +10,7 @@ const Users = (props) => {
     getUsers().then((users) => {
       setUsers(users);
     });
-  });
+  }, []);
 
   const changeUser = (event) => {
     const newUser = event.target.value;
