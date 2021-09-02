@@ -96,6 +96,7 @@ const Comments = (props) => {
                     setComments={setComments}
                     setPage={setPage}
                     setReloadComments={setReloadComments}
+                    reloadComments={reloadComments}
                   />
                 </Route>
               )}

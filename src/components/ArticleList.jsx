@@ -5,21 +5,47 @@ import { getArticles } from './api';
 const ArticleList = (props) => {
   const { topic } = useParams();
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { page, setPage } = props;
 
   useEffect(() => {
     getArticles(topic, page).then((articles) => {
       setArticles(articles);
+      setIsLoading(false);
+      window.scrollTo(0, 0);
     });
   }, [topic, page]);
 
-  return (
+  return isLoading ? null : (
     <div>
+      <header
+        id="showcase"
+        style={{
+          background: `url(https://source.unsplash.com/800x800/?${articles[0].topics}
+          ) no-repeat center center / cover`,
+          opacity: 0.8
+        }}
+      >
+        <div className="container">
+          <div className="showcase-container">
+            <div className="showcase-content">
+              <div className={`category category-${articles[0].topics}`}>
+                {articles[0].topics}
+              </div>
+              <h2>{articles[0].title}</h2>
+              <p>{articles[0].body.slice(0, 250)}...</p>
+              <a href="#" class="btn btn-primary">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
       <section id="home-articles" className="py-2">
         <div className="container">
           <h2>Editor Picks</h2>
           <div className="articles-container">
-            {articles.map((article) => {
+            {articles.slice(1).map((article) => {
               return (
                 <article className="card" key={article.article_id}>
                   <img
@@ -75,22 +101,3 @@ const ArticleList = (props) => {
 };
 
 export default ArticleList;
-
-{
-  /* <header id="showcase">
-        <div className="container">
-          <div className="showcase-container">
-            <div className="showcae-content">
-              <div className={`category category-${articles[0].topics}`}>
-                {articles[0].topics}
-              </div>
-              <h2>{articles[0].title}</h2>
-              <p>{articles[0].body.slice(0, 250)}...</p>
-              <a href="#" class="btn btn-primary">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
-      </header> */
-}

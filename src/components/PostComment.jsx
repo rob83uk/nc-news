@@ -15,7 +15,7 @@ const PostComment = (props) => {
       setNewComment('');
       setComments([]);
       setPage(1);
-      setReloadComments(true);
+      setReloadComments((reloadComments) => !reloadComments);
     });
   };
 
