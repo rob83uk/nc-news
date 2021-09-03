@@ -10,7 +10,7 @@ const ArticleId = (props) => {
     getArticle(article_id).then((article) => {
       setArticle(article);
     });
-  }, [article_id]);
+  }, [article_id, setArticle]);
 
   return (
     <div>
@@ -20,7 +20,7 @@ const ArticleId = (props) => {
             <article className="card">
               <img
                 src={`https://source.unsplash.com/400x400/?${article.topics}`}
-                alt="Random topic representation"
+                alt="cooking"
               />
               <h1 className="l-heading">{article.title}</h1>
 
@@ -34,7 +34,7 @@ const ArticleId = (props) => {
               </p>
               <p>{article.body}</p>
               <br />
-              <i class="far fa-comments fa-2x"></i>
+              <i className="far fa-comments fa-2x"></i>
               <h3>{article.comment_count} Comments</h3>
             </article>
             <aside id="categories" className="card">

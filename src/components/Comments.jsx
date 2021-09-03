@@ -127,7 +127,7 @@ const Comments = (props) => {
                             handleLike(-1, comment.comment_id);
                           }}
                         >
-                          <i class="far fa-thumbs-down" />
+                          <i className="far fa-thumbs-down" />
                         </span>
                         {user.username !== comment.author ? null : (
                           <Route>

@@ -55,7 +55,7 @@ const ArticleList = (props) => {
                     src={`https://source.unsplash.com/400x400/?${
                       article.topics
                     }&sig=${Math.random()}`}
-                    alt="Random image of the topic"
+                    alt="Random topic"
                   />
                   <div>
                     <div className={`category category-${article.topics}`}>

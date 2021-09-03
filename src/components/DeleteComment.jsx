@@ -8,7 +8,7 @@ const DeleteComment = (props) => {
       setComments((currentComments) => {
         const newComments = [];
         currentComments.forEach((comment) => {
-          if (comment.comment_id != comment_id)
+          if (comment.comment_id !== comment_id)
             newComments.push({ ...comment });
         });
         return newComments;

@@ -24,7 +24,7 @@ const PostComment = (props) => {
       <div className="comment-form">
         <div>
           <textarea
-            class="text-input message-input"
+            className="text-input message-input"
             placeholder="Write Your Comment Here"
             value={newComment}
             onChange={handleChange}
@@ -32,7 +32,7 @@ const PostComment = (props) => {
           ></textarea>
         </div>
         <div>
-          <button id="comment-button" type="submit" class="btn btn-dark">
+          <button id="comment-button" type="submit" className="btn btn-dark">
             Comment
           </button>
         </div>
