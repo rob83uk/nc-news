@@ -11,6 +11,7 @@ const ArticleList = (props) => {
   const { page, setPage } = props;
 
   useEffect(() => {
+    setIsLoading(true);
     getArticles(topic, page)
       .then((articles) => {
         setHasErrored(false);

@@ -10,8 +10,8 @@ const Comments = (props) => {
   const [page, setPage] = useState(1);
   const [reloadComments, setReloadComments] = useState(false);
   const [hasErrored, setHasErrored] = useState(false);
+  const [pageHasErrored, setPageHasErrored] = useState(false);
   const [writeComment, setWriteComment] = useState(false);
-  // const [hasErrored, setHasErrored] = useState(false);
 
   const { article_id } = useParams();
   const { article, user } = props;
@@ -32,13 +32,13 @@ const Comments = (props) => {
   useEffect(() => {
     getComments(article_id, page)
       .then((comments) => {
-        setHasErrored(false);
+        setPageHasErrored(false);
         setComments((currentComments) => {
           return currentComments.concat(comments);
         });
       })
       .catch((error) => {
-        setHasErrored(true);
+        setPageHasErrored(true);
       });
   }, [article_id, page, reloadComments]);
 
@@ -65,10 +65,11 @@ const Comments = (props) => {
         return updatedComments;
       });
     });
+
     alert('Thanks for your vote!');
   };
 
-  if (hasErrored) return null;
+  if (pageHasErrored) return null;
 
   return (
     <div>
