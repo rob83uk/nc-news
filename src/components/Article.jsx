@@ -12,6 +12,11 @@ const ArticleId = (props) => {
     });
   }, [article_id, setArticle]);
 
+  const convertTime = (time) => {
+    let date = new Date(time);
+    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+  };
+
   return (
     <div>
       <section id="article">
@@ -26,11 +31,7 @@ const ArticleId = (props) => {
 
               <p>
                 <i className="fas fa-user" />
-                Written by {article.author} ||{' '}
-                {Date(article.created_at).substring(
-                  0,
-                  Date(article.created_at).length - 40
-                )}
+                Written by {article.author} || {convertTime(article.created_at)}
               </p>
               <p>{article.body}</p>
               <br />

@@ -21,6 +21,9 @@ function App() {
       <ScrollToTop />
       <Header user={user} setPage={setPage} />
       <Switch>
+        <Route exact path="/">
+          <ArticleList page={page} setPage={setPage} />
+        </Route>
         <Route exact path="/articles/">
           <ArticleList page={page} setPage={setPage} />
         </Route>
