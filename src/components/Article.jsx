@@ -41,7 +41,9 @@ const ArticleId = (props) => {
               <br />
               <h2>Catergories</h2>
             </aside>
-            <aside className="card bg-secondary">Sign Up</aside>
+            <aside id="sign-up" className="card bg-secondary">
+              Sign Up
+            </aside>
           </div>
         </div>
       </section>

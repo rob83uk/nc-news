@@ -18,29 +18,32 @@ const ArticleList = (props) => {
 
   return isLoading ? null : (
     <div>
-      <header
-        id="showcase"
+      <div
+        id="showcase-image"
         style={{
-          background: `url(https://source.unsplash.com/800x800/?${articles[0].topics}
-          ) no-repeat center center / cover`,
-          opacity: 0.8
+          background: `url(https://source.unsplash.com/800x800/?${
+            articles[0].topics
+          }&sig=${Math.random()}
+          ) no-repeat center center / cover`
         }}
       >
-        <div className="container">
-          <div className="showcase-container">
-            <div className="showcase-content">
-              <div className={`category category-${articles[0].topics}`}>
-                {articles[0].topics}
+        <header id="showcase">
+          <div className="container">
+            <div className="showcase-container">
+              <div className="showcase-content">
+                <div className={`category category-${articles[0].topics}`}>
+                  {articles[0].topics}
+                </div>
+                <h2>{articles[0].title}</h2>
+                <p>{articles[0].body.slice(0, 250)}...</p>
+                <Link to={`/articles/${articles[0].article_id}`}>
+                  <button class="btn btn-primary">Read More</button>
+                </Link>
               </div>
-              <h2>{articles[0].title}</h2>
-              <p>{articles[0].body.slice(0, 250)}...</p>
-              <a href="#" class="btn btn-primary">
-                Read More
-              </a>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
       <section id="home-articles" className="py-2">
         <div className="container">
           <h2>Editor Picks</h2>

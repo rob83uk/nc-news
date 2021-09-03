@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
+import './mobile.css';
 import ArticleList from './components/ArticleList';
 import Footer from './components/Footer';
 import Header from './components/Header';
