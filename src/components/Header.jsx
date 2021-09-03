@@ -40,6 +40,7 @@ const Header = (props) => {
             {topics.map((topic) => {
               return (
                 <Link
+                  key={topic.slug}
                   to={`/articles/topic/${topic.slug}/`}
                   onClick={() => {
                     setPage(1);
@@ -57,7 +58,7 @@ const Header = (props) => {
           <i className="far fa-user" /> {user.username}
         </p>
         <Link to="/users/">
-          <button class="btn btn-dark">Change User</button>
+          <button className="btn btn-dark">Change User</button>
         </Link>
       </div>
     </div>

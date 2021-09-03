@@ -19,16 +19,16 @@ const Footer = () => {
         <div>
           <h2>Site Links</h2>
           <ul>
-            <Link>
+            <Link to="/privicy/">
               <li>About</li>
             </Link>
             <Link to="/privicy/">
               <li>Privicy Policy</li>
             </Link>
-            <Link>
+            <Link to="/privicy/">
               <li>Help and Support</li>
             </Link>
-            <Link>
+            <Link to="/privicy/">
               <li>Contact Us</li>
             </Link>
           </ul>

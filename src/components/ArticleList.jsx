@@ -37,7 +37,7 @@ const ArticleList = (props) => {
                 <h2>{articles[0].title}</h2>
                 <p>{articles[0].body.slice(0, 250)}...</p>
                 <Link to={`/articles/${articles[0].article_id}`}>
-                  <button class="btn btn-primary">Read More</button>
+                  <button className="btn btn-primary">Read More</button>
                 </Link>
               </div>
             </div>
