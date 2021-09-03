@@ -26,9 +26,6 @@ const Footer = () => {
               <li>Privicy Policy</li>
             </Link>
             <Link to="/privicy/">
-              <li>Help and Support</li>
-            </Link>
-            <Link to="/privicy/">
               <li>Contact Us</li>
             </Link>
           </ul>

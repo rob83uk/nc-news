@@ -11,6 +11,7 @@ const Comments = (props) => {
   const [reloadComments, setReloadComments] = useState(false);
   const [hasErrored, setHasErrored] = useState(false);
   const [writeComment, setWriteComment] = useState(false);
+  // const [hasErrored, setHasErrored] = useState(false);
 
   const { article_id } = useParams();
   const { article, user } = props;
@@ -29,11 +30,16 @@ const Comments = (props) => {
   };
 
   useEffect(() => {
-    getComments(article_id, page).then((comments) => {
-      setComments((currentComments) => {
-        return currentComments.concat(comments);
+    getComments(article_id, page)
+      .then((comments) => {
+        setHasErrored(false);
+        setComments((currentComments) => {
+          return currentComments.concat(comments);
+        });
+      })
+      .catch((error) => {
+        setHasErrored(true);
       });
-    });
   }, [article_id, page, reloadComments]);
 
   const handleLike = (num, id) => {
@@ -61,6 +67,8 @@ const Comments = (props) => {
     });
     alert('Thanks for your vote!');
   };
+
+  if (hasErrored) return null;
 
   return (
     <div>

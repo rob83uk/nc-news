@@ -1,21 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticle } from './api';
+import Error from './Error';
 
 const ArticleId = (props) => {
   const { article_id } = useParams();
   const { article, setArticle } = props;
+  const [hasErrored, setHasErrored] = useState(false);
 
   useEffect(() => {
-    getArticle(article_id).then((article) => {
-      setArticle(article);
-    });
+    getArticle(article_id)
+      .then((article) => {
+        setHasErrored(false);
+        setArticle(article);
+      })
+      .catch((error) => {
+        setHasErrored(true);
+      });
   }, [article_id, setArticle]);
 
   const convertTime = (time) => {
     let date = new Date(time);
-    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+    return date.toDateString();
   };
+
+  if (hasErrored) return <Error />;
 
   return (
     <div>

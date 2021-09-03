@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# NC News App ReadMe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Summary
 
-## Available Scripts
+This project was built during a coding bootcmap with Northcoders. It is a C.R.U.D. app built using React and making use of a back-end project here -
 
-In the project directory, you can run:
+https://github.com/rob83uk/be-nc-news
+
+The App is live hosted using Netlify, follow the link below.
+
+https://keen-blackwell-c0fbba.netlify.app/
+
+# How to run this project locally
+
+Clone this repo from Github then CD into the directory.
+
+Install the necessary dependencies by running the following command in the treminal
+
+### `npm i`
+
+Then in the project directory, you can run the app in the development mode.:
 
 ### `npm start`
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# User Stories
 
-### `npm test`
+As a user, I should be able to...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+view a list of all articles
+view a page for each topic with a list of related articles.
+view an individual article.
+view an individual article's comments.
+vote on an article and immediately see the change.
+change user to simulate a new user loggin in.
+post a new comment to an existing article (as a default logged in user. e.g. 'jessjelly')
+delete my own comments (as a default logged in user. e.g. 'jessjelly').
+vote on a comment and immediately see the change.
+navigate over pages of articles (e.g. using pagination or infinite scroll).
+navigate over pages of comments (e.g. using pagination or infinite scroll).
+use the site on my mobile without sacrificing style or functionality
 
-### `npm run build`
+Error-handling: As a user, I should...
+see an appropriate error if I go on a non-existent path / a path for a non-existent article / topic.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+not be allowed to post a comment if I have not filled in all of the form boxes.

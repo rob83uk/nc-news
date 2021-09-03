@@ -1,22 +1,31 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticles } from './api';
+import Error from './Error';
 
 const ArticleList = (props) => {
   const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasErrored, setHasErrored] = useState(false);
   const { page, setPage } = props;
 
   useEffect(() => {
-    getArticles(topic, page).then((articles) => {
-      setArticles(articles);
-      setIsLoading(false);
-      window.scrollTo(0, 0);
-    });
+    getArticles(topic, page)
+      .then((articles) => {
+        setHasErrored(false);
+        setArticles(articles);
+        setIsLoading(false);
+        window.scrollTo(0, 0);
+      })
+      .catch((error) => {
+        setHasErrored(true);
+      });
   }, [topic, page]);
 
-  return isLoading ? null : (
+  if (hasErrored) return <Error />;
+
+  return isLoading || hasErrored ? null : (
     <div>
       <div
         id="showcase-image"

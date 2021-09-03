@@ -10,6 +10,7 @@ import Comments from './components/Comments';
 import Privicy from './components/Privicy';
 import Users from './components/Users';
 import ScrollToTop from './components/ScrollToTop';
+import Error from './components/Error';
 
 function App() {
   const [article, setArticle] = useState({});
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route exact path="/users/">
           <Users user={user} setUser={setUser} />
+        </Route>
+        <Route path="/">
+          <Error />
         </Route>
       </Switch>
       <Footer />

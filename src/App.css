@@ -3,8 +3,7 @@
 }
 
 :root {
-  /* --primary-color: #c72727; */
-  --primary-color: #0c10f5;
+  --primary-color: #c72727;
   --secondary-color: #f99500;
   --light-color: #f3f3f3;
   --dark-color: #333;
@@ -178,7 +177,7 @@ h6 {
   border-bottom: #555 dotted 1px;
 }
 
-.list li a:hover {
+.nav-links li:hover {
   color: var(--primary-color) !important;
 }
 
@@ -325,10 +324,6 @@ h6 {
 #home-articles .articles-container > *:nth-child(2) h3,
 #home-articles .articles-container > *:nth-child(6) h3 {
   color: #fff;
-}
-
-#home-articles .articles-container > *:nth-child(4) {
-  /* Would be nice to reverse the image and text */
 }
 
 #home-articles .articles-container > *:nth-child(7) {
@@ -491,4 +486,18 @@ h6 {
 
 #main-footer .footer-container > *:last-child p {
   text-align: center;
+}
+
+#error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-msg {
+  margin: 2rem;
+  padding: 2rem;
+  min-width: 400px;
+  max-width: 800px;
+  background: #fff;
 }
