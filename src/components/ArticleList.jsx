@@ -49,6 +49,7 @@ const ArticleList = (props) => {
                 <Link to={`/articles/${articles[0].article_id}`}>
                   <button className="btn btn-primary">Read More</button>
                 </Link>
+                <p>{articles[0].comment_count} comments</p>
               </div>
             </div>
           </div>
