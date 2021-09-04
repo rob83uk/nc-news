@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticle } from './api';
+import { getArticle, patchVote } from './api';
 import Error from './Error';
 
 const ArticleId = (props) => {
@@ -24,6 +24,20 @@ const ArticleId = (props) => {
     return date.toDateString();
   };
 
+  const handleVote = (num) => {
+    patchVote(article_id, num)
+      .then((article) => {
+        setArticle((article) => {
+          const updatedArticle = { ...article };
+          updatedArticle.votes += num;
+          return updatedArticle;
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   if (hasErrored) return <Error />;
 
   return (
@@ -44,8 +58,28 @@ const ArticleId = (props) => {
               </p>
               <p>{article.body}</p>
               <br />
-              <i className="far fa-comments fa-2x"></i>
-              <h3>{article.comment_count} Comments</h3>
+
+              <div className="article-data">
+                <i className="far fa-comments fa-2x"></i>
+                <h3>{article.comment_count} Comments</h3>
+                <h3>{article.votes} Likes</h3>
+                <span
+                  className="like"
+                  onClick={() => {
+                    handleVote(1);
+                  }}
+                >
+                  <i className="far fa-thumbs-up"></i>
+                </span>
+                <span
+                  className="dislike"
+                  onClick={() => {
+                    handleVote(-1);
+                  }}
+                >
+                  <i className="far fa-thumbs-down" />
+                </span>
+              </div>
             </article>
             <aside id="categories" className="card">
               <br />

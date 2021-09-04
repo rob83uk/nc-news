@@ -55,3 +55,9 @@ export const deleteComment = async (comment_id) => {
   const { data } = await articlesApi.delete(`/comments/${comment_id}`);
   return data;
 };
+
+export const patchVote = async (id, vote) => {
+  const newVote = { inc_votes: vote };
+  const { data } = await articlesApi.patch(`/articles/${id}`, newVote);
+  return data.article;
+};
